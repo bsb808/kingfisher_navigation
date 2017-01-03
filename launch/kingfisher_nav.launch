@@ -1,13 +1,19 @@
+<?xml version="1.0"?>
 <launch>
-  <node pkg="sensor_node_pkg" type="sensor_node_type" name="sensor_node_name" output="screen">
-    <param name="sensor_param" value="param_value" />
+
+  <param name="use_sim_time" value="true" />
+
+  <include file="$(find kingfisher_control)/launch/kingfisher_twist_control.launch"/>
+
+  <!-- Provides transforms from utm->odom and odom->base_link -->
+  <node pkg="geonav_transform" type="geonav_transform_node" name="geonav_transform_node" clear_params="true" output="screen">
+    <!-- Datum as latitude, longitude [decimal deg.], yaw [ENU, degrees] -->
+    <rosparam param="datum">[36.6137, -121.912, 0.0]</rosparam>
+    <!-- Input -->
+    <remap from="odometry/nav" to="nav_odom" />
+    <!-- Output -->
+    <remap from="odometry/utm" to="odom_utm" />
+    <remap from="odometry/odom" to="odom" />
   </node>
 
-  <node pkg="odom_node_pkg" type="odom_node_type" name="odom_node" output="screen">
-    <param name="odom_param" value="param_value" />
-  </node>
-
-  <node pkg="transform_configuration_pkg" type="transform_configuration_type" name="transform_configuration_name" output="screen">
-    <param name="transform_configuration_param" value="param_value" />
-  </node>
 </launch>

@@ -13,6 +13,9 @@
     <rosparam file="$(find kingfisher_navigation)/config/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find kingfisher_navigation)/config/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find kingfisher_navigation)/config/base_local_planner_params.yaml" command="load" />
+    <remap from="cmd_vel" to="nav_cmd_vel" />
   </node>
+  
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find kingfisher_navigation)/rviz/kingfisher_nav_rviz.rviz"/>
 
 </launch>
