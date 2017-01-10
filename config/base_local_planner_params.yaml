@@ -1,17 +1,26 @@
 TrajectoryPlannerROS:
   max_vel_x: 1.0
-  min_vel_x: 0.2
+  min_vel_x: 0.01
   max_vel_theta: 1.0
   min_in_place_vel_theta: 0.1
   yaw_goal_tolerance: 0.1
-  xy_goal_tolerance: 1.0
+  xy_goal_tolerance: 0.5
   latch_xy_goal_tolerance: false
-  meter_scoring: true
-  sim_time: 1.0  # default is 1.0, min_vel*sim_period < 2*xy_goal_tolerance
+  
 
-  acc_lim_theta: 2.0 #3.2
-  acc_lim_x: 2.0 #2.5
-  acc_lim_y: 2.0 #2.5
+  sim_time: 2.5  # default is 1.0, min_vel*sim_period < 2*xy_goal_tolerance
+  sim_granularity: 0.1 # [0.025] The step size, in meters, to take between points on a given trajectory
+
+  meter_scoring: true
+  pdist_scale: 6.0  # [0.6] how much the controller should stay close to path it was given 
+  gdist_scale: 0.8 # [0.8] how much the controller should attempt to reach its local goal, also controls speed
+  occdist_scale: 0.1 # [0.01] how much the controller should attempt to avoid obstacl
+  publish_cost_grid: true # for visualizing the cost
+
+  
+  acc_lim_theta: 5.0 #3.2
+  acc_lim_x: 5.0 #2.5
+  acc_lim_y: 0.0 #2.0 #2.5
  
   holonomic_robot: false
 

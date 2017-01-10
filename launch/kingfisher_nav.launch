@@ -6,8 +6,10 @@
   <include file="$(find kingfisher_control)/launch/kingfisher_twist_control.launch"/>
 
   <!-- For setting debug level to debug -->
+  <!--
   <env name="ROSCONSOLE_CONFIG_FILE" 
        value="$(find geonav_transform)/config/custom_rosconsole.conf"/>
+  -->
 
   <!-- Provides transforms from utm->odom and odom->base_link -->
   <node pkg="geonav_transform" type="geonav_transform_node" name="geonav_transform_node" clear_params="true" output="screen">

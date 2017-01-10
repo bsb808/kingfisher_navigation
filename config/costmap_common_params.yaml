@@ -3,4 +3,6 @@ raytrace_range: 3.0
 #footprint: [[x0, y0], [x1, y1], ... [xn, yn]]
 #robot_radius: ir_of_robot
 inflation_radius: 0.55
-
+global_frame: odom
+robot_base_frame: base_link
+update_frequency: 5.0
